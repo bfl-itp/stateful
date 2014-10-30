@@ -1,9 +1,126 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>So-and-so's Stateful Assignment</title>
+    <title>Chrisanthy's Stateful Assignment </title>
+
+    <style>
+    h1, p{
+      text-align:center;
+    }
+
+    #yesButton{
+
+      margin-left: 550px;
+
+    }
+    </style>
+
+    <h1> Math Quiz </h1>
+
+
   </head>
+
   <body>
-    YOUR PROJECT HERE
+    <button onclick="generateNums()" style= "margin: 0 auto; display: block"> Generate Questions</button>
+
+    <p>
+      <span id = "number1"></span> + <span id= "number2"></span> = <span id = "number3"></span>
+
+    </p>
+    <button type = "button" id="yesButton" onclick= "yb()"> True </button>
+    <button type = "button" id="noButton" onclick= "nb()"> False </button>
+    <button type = "button" id="eraseScore" onclick= "eS()"> Clear Scores </button>
+    <p>
+      You have <span id = "correctAns">  </span> correct answer(s) and <span id = "incorrectAns">  </span> incorrect answer(s).
+    </p>
+
+
+    <script>
+    //check if local storage kosong. klo kosong, disp 0. klo ga kosong, disp apa yg ada.
+    if (localStorage.getItem("cC")=== null || localStorage.getItem("iC") === null){
+      var correctCount = 0;
+      var incorrectCount = 0;
+    }else{
+      var correctCount = Number(localStorage.cC);
+      var incorrectCount = Number(localStorage.iC);
+    }
+
+
+    document.getElementById("correctAns").innerHTML = correctCount;
+    document.getElementById("incorrectAns").innerHTML = incorrectCount;
+
+
+    function saveScorecC(x){
+      localStorage.setItem('cC', x);
+      document.getElementById("correctAns").innerHTML = localStorage.getItem('cC');
+    }
+    function saveScoreiC(y){
+      localStorage.setItem('iC', y);
+      document.getElementById("incorrectAns").innerHTML = localStorage.getItem('iC');
+    }
+
+
+
+    function generateNums(){
+      //enable buttons
+      document.getElementById("yesButton").disabled = false;
+      document.getElementById("noButton").disabled = false;
+
+      //generate random nums b/w 1-10
+      x = document.getElementById("number1").innerHTML = Math.floor(Math.random()*11);
+      y = document.getElementById("number2").innerHTML = Math.floor(Math.random()*11);
+
+      z = x+y;
+
+      //make sure z != rand
+      do{
+        rand = Math.floor(Math.random()*21);
+      }
+      while (rand == z);
+
+      //2 ans, 1 correct, 1 random.
+      if (rand % 2 == 0){
+        document.getElementById("number3").innerHTML = z;
+      } else {
+        document.getElementById("number3").innerHTML = rand;
+      }
+    }
+
+    function yb(){
+      document.getElementById("yesButton").disabled = true;
+      document.getElementById("noButton").disabled = true;
+
+      if (document.getElementById("number3").innerHTML == z){
+        correctCount++;
+        saveScorecC(correctCount);
+      }else if (document.getElementById("number3").innerHTML == rand) {
+        incorrectCount++;
+        saveScoreiC(incorrectCount);
+      }
+    }
+
+    function nb(){
+      document.getElementById("yesButton").disabled = true;
+      document.getElementById("noButton").disabled = true;
+
+      if (document.getElementById("number3").innerHTML == z){
+          incorrectCount++;
+          saveScoreiC(incorrectCount);
+      }else if (document.getElementById("number3").innerHTML == rand) {
+          correctCount++;
+          saveScorecC(correctCount);
+      }
+    }
+
+    function eS(){
+        localStorage.clear();
+        correctCount = 0;
+        incorrectCount = 0;
+        document.getElementById("correctAns").innerHTML = correctCount;
+        document.getElementById("incorrectAns").innerHTML = incorrectCount;
+    }
+
+
+    </script>
   </body>
 </html>
