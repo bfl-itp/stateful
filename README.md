@@ -1,9 +1,22 @@
 # Stateful Assignment
 
-Create an animation that walks the viewer through some process, using only icons/emoticons/emoji. See http://bfl-itp.github.io/iconomation/ for a demo. Even without knowing *any* JavaScript, the code in [`index.html`](index.html) and [`scripts/iconomation.js`](scripts/iconomation.js) should be enough to get you started. What's included on the page:
-
-Part I
-
 Javascript Cosino game to learn about Ratio.
 
 Now allowed users to review the result that in last roll played.
+
+$('#LA1').addClass(localStorage.A00);
+$('#LA2').addClass(localStorage.A01);
+$('#LA3').addClass(localStorage.A02);
+
+$('#LB1').addClass(localStorage.B00);
+$('#LB2').addClass(localStorage.B01);
+$('#LB3').addClass(localStorage.B02);
+
+$('#LC1').addClass(localStorage.C00);
+$('#LC2').addClass(localStorage.C01);
+$('#LC3').addClass(localStorage.C02);
+
+
+localStorage.*  contains the information from last result,
+
+use addClass set the class of emoji in order to Reload the last result.
