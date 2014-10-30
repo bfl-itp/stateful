@@ -1,9 +1,102 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>So-and-so's Stateful Assignment</title>
-  </head>
-  <body>
-    YOUR PROJECT HERE
-  </body>
+<head>
+	
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<style type="text/css">
+#wrapper {
+	width: 100%;
+	height: 100%;
+	background: #FFFFFF;
+}
+
+.intro_1 {
+	width: 300px;
+	height: 200px;
+	background-color: #CDBFAC;
+	vertical-align: middle;
+	margin: 0 auto;
+}
+
+.intro_2 {
+	width: 300px;
+	height: 100px;
+	position: absolute;
+	margin-top: 50px;
+	display: none;
+	
+}
+
+.intro_2#music {
+	background: #993333;
+	
+	margin-left: 10%;
+}
+
+.intro_2#life {
+	background: #156874;
+
+	margin-left: 60%;
+}
+
+.interaction {
+	width: 150px;
+	height: 50px;
+	position: absolute;
+	margin-top: 250px;
+	display: none;
+}
+
+.interaction#composing {
+	background: #993333;
+	
+	margin-left: 10%;
+}
+
+.interaction#restaurant {
+	background: #156874;
+
+	margin-left: 50%;
+}
+
+.interaction#street {
+	background: #156874;
+
+	margin-left: 70%;
+}
+	</style>
+	<script type="text/javascript">
+
+var phase = 1;
+function intro2_visible(){
+	document.getElementById("music").style.display="block";  
+	document.getElementById("life").style.display="block";  
+	phase = 2;
+}
+
+function musicVisible(){
+	document.getElementById("composing").style.display="block"; 
+	phase = 3; 
+	
+}
+
+function lifeVisible(){
+	document.getElementById("restaurant").style.display="block";  
+	document.getElementById("street").style.display="block";  
+	phase = 3;
+}
+	</script>
+</head>
+<title>Persistent Page Demo</title>
+<body>
+<div id="wrapper">
+	<div class="intro_1" id="all" onclick="intro2_visible()">
+	</div>
+	<div class="intro_2" id="music" onclick="musicVisible()"></div>
+	<div class="intro_2" id="life" onclick="lifeVisible()"></div>
+	<div class="interaction" id="composing"></div>
+	<div class="interaction" id="restaurant"></div>
+	<div class="interaction" id="street"></div>
+</div>
+</body>
 </html>
