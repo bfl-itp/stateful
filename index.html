@@ -1,9 +1,74 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>So-and-so's Stateful Assignment</title>
+    <title>React Assignment</title>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="http://afeld.github.io/emoji-css/emoji.css" rel="stylesheet">
+
+    
+    <style>
+      body {
+        text-align: center;
+        font-family: verdana;
+      }
+      .testspace {
+        width: 600px;
+        height: 500px;
+        margin: auto;
+        position: relative;
+        border: 3px solid green;
+      }
+
+      p {
+    	font-size:300%;
+      }
+
+      #count{
+        margin-left: 240px;
+        margin-top: -48px;
+        font-size:150%;          
+      }
+
+      .top{
+        position: absolute;
+        margin: 10px;
+      }
+
+      .iconomation{
+        position: fixed;
+        font-size:80%;
+
+      }
+    </style>
+    <script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="scripts/jquery-ui.min.js"></script>
   </head>
   <body>
-    YOUR PROJECT HERE
+    <h1>Simple Math Test</h1>
+    <div class="iconomation">
+      
+    </div>
+    <div class="testspace">
+      <div class="top">
+        <button id="addition">Addition</button> 
+        <button id="multiplication" disabled ="disabled">Multiplication</button> <br>
+        <div id="newlevel"></div>
+      </div>     
+      <h3> Right answers:</h3>
+      <h4 id="count"></h4>
+      <div class="contenttext">   
+        <p id="mathtype"></p>
+    		<p id="math"></p>
+    		<h3> Answer here: </h3>
+    		<input type="text" id="answer" value="">
+    		<button id="button1">Check answer</button> 
+        <button id="tryagain">Try again</button>
+    		<h3 id="feedback"></h3>
+      </div>  
+    </div> 
+    
+
+
+    <script src="scripts/react.js"></script>
   </body>
 </html>

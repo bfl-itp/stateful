@@ -1,5 +1,5 @@
 {
-  "name": "stateful",
+  "name": "react",
   "private": "true",
   "scripts": {
     "test": "grunt"
