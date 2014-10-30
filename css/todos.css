@@ -34,7 +34,6 @@ body {
 
 h1 {
         background: #fe921f;
-         line-height: 4em;
         color: #ffffff;
         display: inline-block;
         font-family: 'Lato', sans-serif;
@@ -79,6 +78,7 @@ h1 {
     position: absolute;
     top: -80px;
     width: 95%;
+    height:50px;
     font-weight: bold;
     text-align: center;
     color: #888;
