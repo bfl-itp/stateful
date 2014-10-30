@@ -1,5 +1,5 @@
 {
-  "name": "stateful",
+  "name": "iconomation",
   "private": "true",
   "scripts": {
     "test": "grunt"
