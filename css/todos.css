@@ -76,9 +76,13 @@ h1 {
 }
 #todoapp h1 {
     position: absolute;
+     font-size: 14px;
+     line-height:16px;
+     padding:16px;
+    background: rgba(215, 94, 80, 0.9);
     top: -80px;
     width: 95%;
-    height:50px;
+    height:30px;
     font-weight: bold;
     text-align: center;
     -webkit-text-rendering: optimizeLegibility;
