@@ -1,0 +1,29 @@
+body {
+	font-family:garamond;
+}
+
+.b, .reset {
+	font-size:20pt;
+	margin:20px;
+	width:110px;
+	text-align:center;
+	font-weight:bold;
+	background:lightblue;
+	opacity:0.8;
+}
+
+.reset {
+	color:white;
+	background:crimson;
+}
+
+.b:hover, .reset:hover {
+	cursor:pointer;
+	opacity:1;
+}
+
+.completed {
+	font-weight:normal;
+	background:#ddd;
+	color:gray;
+}
