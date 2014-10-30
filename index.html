@@ -1,9 +1,233 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>So-and-so's Stateful Assignment</title>
-  </head>
-  <body>
-    YOUR PROJECT HERE
-  </body>
-</html>
+<head>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script> <!--jQuery-->
+  <script language="javascript" type="text/javascript" src="https://cdn.jsdelivr.net/p5.js/0.3.8/p5.min.js"></script>
+  <script language="javascript" type="text/javascript" src="https://cdn.jsdelivr.net/p5.js/0.3.8/addons/p5.dom.js"></script>
+  <script language="javascript" type="text/javascript" src="markov.js"></script>
+  <script language="javascript" type="text/javascript" src="sketch.js"></script>
+  <script language="javascript" type="text/javascript" src="stellar.js"></script>
+  <style>
+
+  body{
+    background-color:black;
+    text-align: center;
+    font-family: Helvetica;
+  }
+
+
+.line-separator{
+
+height:1px;
+background:white;
+border-bottom:1px solid #313030;
+
+}
+
+
+  #div1  {
+    
+    background-image: url('ABBEY.jpg');
+    /*background-size: contain;*/
+    /*//background-repeat: no-repeat;*/
+    border-color: #CFB023;
+    border-style: groove;
+    border-width: 10px;
+    background-position: center;
+    position:absolute;
+    width:600px;
+    height:4000px;
+    margin: 10% 20% 0 20%;
+      
+}
+
+#div2  {
+    
+    background-image: url('ICARUS2.png');
+    /*background-size: contain;*/
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    position:absolute;
+    
+    /*background-size: contain;*/
+    width:600px;
+    height:4000px;
+    padding-left: 50%;
+    padding-right: 20%;
+    margin-left: -50%;
+    margin-right: 50%;
+  
+}
+
+#containerDiv{
+width: 500px;
+height:auto;
+float:center;
+
+}
+    #spacerdiv {
+      height: 4000px;
+      margin-top: 250px;
+      
+      
+      
+    }
+
+    a{
+      color:#CFB023;
+    }
+    
+    
+    @media screen and (max-width:2500px)
+{
+  #containerdiv{width: 1000px; }
+
+  .line-separator{margin:auto;}
+  
+  #titleDiv,#lowerHalf, footer
+  {
+    clear: left;
+    float: center;
+    margin: 150px 0 0 0;
+    width: 1000px;
+  }
+  
+  #div1 {margin-left: 10%;width: 1500px;}
+  
+  #div2{width: 1000px;margin:0;}
+  
+}
+    
+    
+    
+    
+    
+    
+    @media screen and (max-width:1720px)
+{
+  #containerdiv{width: 1000px; }
+
+  .line-separator{margin:auto;}
+  
+  #titleDiv,#lowerHalf, footer
+  {
+    clear: left;
+    float: center;
+    margin: 150px 0 0 0;
+    width: 1000px;
+  }
+  
+  #div1 {margin-left: 10%;width: 800px;}
+  
+  #div2{width: 500px;margin:0;}
+  
+}
+    
+    
+    
+    
+    
+    @media screen and (max-width:999px)
+{
+  #containerdiv{ width: 800px; }
+
+  .line-separator{margin:auto;}
+  
+  #titleDiv,#lowerHalf, footer
+  {
+    clear: left;
+    float: center;
+    margin: 50px 0 0 0;
+    width: 550px;
+  }
+  
+  
+}
+
+@media screen and (max-width:480px)
+{
+  #containerdiv { width: 400px; }
+  
+  #div1 { width: 350px; }
+  
+  #div2{width: 300px;}
+  
+  #button{border:none;border-style: none;border-width: 0px;}
+  
+  
+  #titleDiv
+  {
+    border:none;
+    float: center;
+    width: auto;
+    margin-left:0px;
+  }
+  
+  .line-separator{margin:auto;}
+  
+  #spacerdiv
+  {
+    float: center;
+    width: auto;
+    margin-bottom:-20px;
+  }
+  
+  #lowerHalf
+  {
+    float: center;
+    width: auto;
+    margin: 0;
+    margin-left:0px;
+  }
+  
+  footer {
+          float: center;
+    width: auto;
+    margin: 0;
+    margin-left:-20px;
+    
+  }
+}
+
+    
+    
+    
+    
+    
+    
+  </style>
+</head>
+
+<body>
+
+<div id="titleDiv" style="margin-left:25%">
+<h1 id = "title" style="font-size:55px; margin-top: 50px;font-family:black; color:white;text-align:center; padding-bottom:0px;">Which Christian Denomination Should I Choose?</h1>
+<p><a href="#" id = "button" style="text-decoration:none;margin: 10% 0 10% 0;text-align:center;border-style: solid;border-width: 5px; border-radius:25%; padding:10px;">CLICK TO SHOP FOR GOD</a></p>
+<p id = "prompt" style="text-align:center;color:white; padding:20px"></p>
+<div class="line-separator"></div>
+</div>
+
+
+
+<div id="containerDiv">
+<div id="div1" data-stellar-background-ratio="2">
+<div id="div2" data-stellar-background-ratio="0.1">
+</div>
+</div>
+</div>
+
+<div id = "spacerdiv"style="margin-left:25%"></div>
+
+<div id="lowerHalf" style="margin-left:25%">
+<h1 id = "name"style="margin-top: -70px;font-size:36px;color:white;text-align:center;" >Empty Shopping Cart</h1>
+<p><a href="data/church.txt" style="text-align:center">List of Christian Denominations</a></p>
+</div>
+</body>
+
+
+<footer style="text-align:center; font-size:12px; color:white;margin: 10% -25% 30px 25%;">
+  
+  <p>-Here, a Markov Chain algorithm is used to generate a jumbled denomination from a list of 376 real Christian denominations-
+  <br> <style="font-size:8px;">Based on Daniel Shiffman's "Markov by Character" Example, 2014</style></p>
+
+
+</footer>
