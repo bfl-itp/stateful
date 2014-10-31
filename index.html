@@ -1,9 +1,72 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>So-and-so's Stateful Assignment</title>
-  </head>
-  <body>
-    YOUR PROJECT HERE
-  </body>
+    <title>Julia's Stateful Assignment</title>
+  
+<body>
+
+<svg height="100" width="100">
+  <circle cx="50" cy="50" r="40" fill="red" /> 
+</svg> 
+ 
+</body>
 </html>
+</html>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  <script>
+function TrafficLight() {
+      this.state = new Stateful(this, "stop");
+    }
+
+    TrafficLight.States = {
+      stop: {
+        color: "red",
+        time:  8,
+
+        next: function() {
+          this.state.transition("go");
+        },
+
+        onEnterState: function() {
+          // Turn on traffic camera to see who crosses on a red light
+        },
+
+        onExitState: function() {
+          // Turn off traffic camera
+        }
+      },
+
+      go: {
+        color: "green",
+        time:  10,
+
+        next: function() {
+          this.state.transition("caution");
+        }
+      },
+
+      caution: {
+        color: "yellow",
+        time:  2,
+
+        next:  function() {
+          this.state.transition("stop");
+        }
+      }
+    }
+
+    var light = new TrafficLight();
+    light.color //=> "red"
+    light.next()
+    light.color //=> "green"
+    light.next()
+    light.color //=> "yellow"
+    light.next()
+    light.color //=> "red"
+    
+//resource: https://gist.github.com/foca/3462441
+
+</script>
+
+
