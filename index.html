@@ -1,9 +1,988 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>So-and-so's Stateful Assignment</title>
+    <title>!!!GitHub-Casino!!!</title>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+
+    <script src="http://code.jquery.com/jquery-2.1.1.min.js"></script> 
+    <script src="p5.js"></script> 
+    <script src="jquery.easing.1.3.js"></script>
+
+    <link href="http://afeld.github.io/emoji-css/emoji.css" rel="stylesheet">
+
+    <script>
+
+    var BrowserWidth;
+    var BrowserHeight;
+
+    var LineHeight;
+    var IconHeight;
+
+    var DeltaMouseY;
+
+    var Overhide = true;
+    
+    $(document).ready(function(){
+
+
+    //alert("haha");
+    Layout();
+
+    });
+
+    window.onresize = function(){
+    Layout();
+
+    }
+
+    function Layout(){
+
+    BrowserWidth = BrowserBox.offsetWidth;
+    BrowserWidth = BrowserBox.offsetHeight;
+
+    LineHeight =  Line1.offsetHeight  //parseFloat();
+    //alert(LineHeight);
+
+    IconHeight = LineHeight/3;
+    //alert(IconHeight);
+
+    $("i").css({
+      "height": IconHeight + "px",
+      "width": "33.3333%",
+      "margin" : 0+"px",
+      "padding" : 0+"px",
+      "top" : 0+"px",
+    });
+
+
+for(j=1; j<4; j++){
+  
+  var LineCount;
+  var LLineCount;
+
+  if(j==1){ LineCount="A"; LLineCount="LA";}
+  else if(j==2){ LineCount="B"; LLineCount="LB";}
+  else if(j==3){ LineCount="C"; LLineCount="LC";}
+
+  for(i=1; i<8; i++){
+
+    var AObject = document.getElementById(LineCount+i);
+
+    AObject.style.top= IconHeight*(i-3) + "px";
+    //alert(AObject.style.top);
+
+  }
+
+  for(k=1; k<4; k++){
+    var LObject = document.getElementById(LLineCount+k);
+
+    LObject.style.top = IconHeight*(k-1) + "px";
+  }
+
+
+}
+
+}
+
+function setup(){
+frameRate(48);
+}
+
+function Discover(){
+  TopHeading.style.display = "none";
+  Overhide = false;
+  AlertMessage.style.opacity=1;
+}
+
+function EnlargeHow(){
+  Howp.innerHTML="How can I win?";
+  How.style.backgroundColor = "rgba(135,85,255,0.75)";
+  $("#How").animate({width:220});
+}
+
+function ShrinkHow(){
+  Howp.innerHTML="?";
+  How.style.backgroundColor = "";
+  $("#How").animate({width:40});
+}
+
+  </script>
+
+    <style>
+      html{
+        height: 100%;
+        width: 100%;
+      }
+
+      body {
+        height: 100%;
+        width: 100%;
+        margin: 0px;
+        background: #235;
+        overflow: hidden;
+        //background-image: url(MainBack.jpg);
+        background-size:cover;
+      }
+
+      #TopHeading{
+        width: 100%;
+        position: fixed;
+        top: 5px;
+        color: #FFF;
+        text-align: center;
+        z-index: 100;
+        height: 100%;
+        background-color: rgba(0,0,0,0.8);
+        font-family: "Orator Std","Myriad Set Pro","Lucida Grande","Helvetica Neue","Helvetica","Arial","Verdana","sans-serif";
+      }
+
+      #PlayButtom{
+        cursor: pointer;
+        width: 260px;
+        position: absolute;
+        top: 0px;
+        bottom: 0px;
+        left: 0px;
+        right: 0px;
+        margin: auto;
+        color: #FFF;
+        text-align: center;
+        z-index: 100;
+        padding-top: 14px;
+        height: 24px;
+        border-radius: 8px;
+        background-color: #FF9900;
+        font-family: "Orator Std","Myriad Set Pro","Lucida Grande","Helvetica Neue","Helvetica","Arial","Verdana","sans-serif";
+      }
+
+      #GithubIntro{
+      height: 38%;
+      position: absolute;
+      bottom: 25px;
+      margin: auto;
+      right: 0px;
+      left: 0px;
+      //-webkit-transform: rotateZ(180deg);
+      //-moz-transform: rotateZ(180deg);
+      }
+
+      h1#Titile,p#SubTitle{
+        text-align: center;
+        font-weight:normal;
+      }
+      p#SubTitle{
+        padding-top: 0px;
+      }
+
+      #Container{
+         height: 100%;
+         width: 100%;
+      }
+
+      #Content,#LastResultPanel{
+        height: 85%;
+        width: 60%;
+        position: absolute;
+        top: 15%;
+        left: 20%;
+        background-color: #2682c3;
+        min-width: 480px;
+        min-height: 450px;
+        border-top-left-radius: 185px;
+        border-top-right-radius: 185px;
+        background-image: url(Bin_NM.png);
+        background-size: auto 26%;
+        background-repeat: no-repeat;
+        background-position: center bottom;
+        box-shadow: 0px 2px 6px rgba(0,0,0,0.4);
+        -webkit-transition : background-image 0.3s ease-in-out;
+        -moz-transition : background-image 0.3s ease-in-out;
+      }
+
+      #LastResultPanel{
+       background-color: transparent;
+       z-index: 5;
+      }
+
+      #Close{
+       position: absolute;
+       right:17.8%;
+       top:7.8%;
+       height: 30px;
+       width: 30px;
+       background-color: black;
+       border-radius: 25px;
+       border: solid 2.5px #FFF;
+       z-index: 8;
+
+      }
+
+      #PlayWindow,#LastResultWindow{
+        position: relative;
+        width: 60%;
+        height: 60%;
+        background-color: rgba(255,255,255,0.5);
+        background-image: url(WindowGrid.gif);
+        background-repeat: repeat-y;
+        background-size: contain;
+        background-position: center;
+        margin: auto;
+        top:10%;
+        overflow: hidden;
+        border-radius: 25px;
+        border: solid 3px #FFF;
+      }
+
+      #LA1,#LA2,#LA3,#LB1,#LB2,#LB3,#LC1,#LC2,#LBC{
+        //z-index: 6;
+      }
+
+      #LastResultWindow{
+        background-color: rgba(255,255,255,0.4);
+
+      }
+
+
+
+      .line{
+        width: 33.3333%;
+        height: 100%;
+        float: left;
+        //opacity: 0.5;
+      }
+
+      #Line1{
+      //background: #123;
+      }
+
+      #Line2{
+      //background: #234;
+      }
+
+      #Line3{
+      //background: #523;
+      }
+
+      i{
+        //background: #35E;
+        position: absolute;
+      }
+
+      #BrowserBox{
+        position: absolute;
+        z-index: -99;
+        height: 100%;
+        width: 100%;
+      }
+
+      #RollBarContainer{
+        position: absolute;
+        width: 50px;
+        height: 160px;
+        //background-color: #CCC;
+        top:  10%;
+        left: 85%;
+      }
+
+      #RollBall{
+        position: absolute;
+        z-index: 5;
+        top: -15px;
+        left: -5px;
+        right: 0px;
+        margin: auto;
+        width: 60px;
+        height: 60px;
+        border-radius:100%;
+        background: url(BallBack.png) no-repeat;
+        background-color: #FF9900;
+        background-size: contain;
+        background-position: center -6px;
+        box-shadow: 0px 2px 3px rgba(0,0,0,0.2);
+        cursor:s-resize;
+        -webkit-transform: perspective(200px) translateZ(58px);
+        -moz-transform: perspective(200px) translateZ(58px);
+      }
+
+      #RollBar{
+        position: absolute;
+        height: 100%;
+        z-index: 2; 
+        background: url(RollBar.jpg) bottom repeat-x;
+        background-size: contain;
+        border-radius: 30px;
+        right: 0px;
+        left: 0px;
+        margin: auto;
+        top: 15px;
+        width: 55%;
+        box-shadow: 0px 0px 2px rgba(255,255,255,0.2);
+        -webkit-transform: perspective(200px) rotateX(-30deg);
+        -moz-transform: perspective(200px) rotateX(-30deg);
+      }
+
+      #BarJoint{
+      width: 78%;
+      left: 9.58%;
+      height: 85px;
+      background:#666;
+      background-image: url(PngBack.png);
+      background-size: contain;
+      background-position: center;
+      background-repeat: repeat-x;
+      border-radius:30px;
+      position: absolute;
+      z-index: 1;
+      top: 75%;
+      border-top: solid 1px #222; 
+      border-bottom: solid 1px #CCC;
+      border-left: solid 1px #888; 
+      border-right: solid 1px #AAA; 
+      -webkit-transform: perspective(200px) TranslateZ(-50px);
+      -moz-transform: perspective(200px) TranslateZ(-50px);
+      }
+
+      #GithubBack1{
+      height: 38%;
+      position: absolute;
+      bottom: -1%;
+      margin: auto;
+      //right: 0px;
+      left: 0px;
+      -webkit-transform: rotateZ(-10deg);
+      -moz-transform: rotateZ(-10deg);
+      }
+
+      #GithubBack2{
+      height: 32%;
+      position: absolute;
+      bottom: 1%;
+      margin: auto;
+      right: -2%;
+      //left: 0px;
+      -webkit-transform: rotateZ(12deg);
+      -moz-8: rotateZ(12deg);
+      }
+
+      #AlertMessage{
+        opacity: 0;
+        height: 140px;
+        width: 240px;
+        //background-color: #FF9900;
+        position: absolute;
+        z-index: 100;
+        top: 14%;
+        left: 8%;
+        background-image: url(Alert.png);
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-position: center;
+        text-align: center;
+        padding-top:40px; 
+        font-size: 20px;
+        line-height: 28px;
+        -webkit-transition : opacity 0.6s ease-in-out;
+      }
+
+      #How{
+        border-radius: 21px;
+        height: 40px;
+        width: 40px;
+        background-color: rgba(255,95,95,0.75);
+        position: absolute;
+        top:35px;
+        left:45px;
+        color:#FFF;
+        text-align: center;
+        cursor: pointer;
+        overflow: hidden;
+        -webkit-transition: background 0.5s ease-in-out;
+      }
+
+      #Howp{
+        width: 100%;
+        overflow: hidden;
+      }
+
+    </style>
+
+
+
   </head>
   <body>
-    YOUR PROJECT HERE
+
+    <div id="BrowserBox">
+    </div>
+   
+    <div id="TopHeading">
+  <img src="Gitrock.png" id="GithubIntro" />
+   <div style="position:absolute; top:16%; margin:auto; left:0px; right:0px;">
+   <h1 id="Titile">
+      ~ Welcome to GITHUB CASINO ~
+    </h1>
+    <p id="SubTitle">
+      show me what u got!
+    </p>
+  </div>
+
+  <div id="PlayButtom" onclick="Discover();">
+    Start
+  </div>
+   </div>
+
+   <div "HowBoard">
+    //discover lines: overflow:display & opacity:0.5 z-index:top
+
+    We got 3 lines right here,and each line have 7 choices to bump out<br />
+
+    so we can do this calculation:<br />
+
+    //show calculation<br />
+
+    there is 7*7*7 = 343 kinds of posibilities that generate from this Casino
+
+    //canvas//show graph
+   </div>
+
+   <div id="How">
+    <p id="Howp" style="margin-top:12px;" onmouseover="EnlargeHow();" onmouseout="ShrinkHow();">
+    ?
+    </p>
+   </div>
+
+
+
+
+
+   <div id = "LastResultPanel">
+
+   <div id = "Close" onclick="ShowLastResult();">
+
+   </div>
+
+   <div id = "LastResultWindow">
+   
+        <div class="line">
+           <i id="LA1"></i>
+           <i id="LA2"></i>
+           <i id="LA3"></i>
+         </div>
+         
+         <div class="line">
+           <i id="LB1"></i>
+           <i id="LB2"></i>
+           <i id="LB3"></i>
+         </div>
+         
+         <div class="line">
+           <i id="LC1"></i>
+           <i id="LC2"></i>
+           <i id="LC3"></i>
+         </div>
+   
+   </div>
+
+
+   </div>
+
+
+
+
+
+
+    <div id="Container">
+
+      <img src="Gitgirl.gif" id="GithubBack1" />
+
+      <img src="Gitnijia.gif" id="GithubBack2" />
+
+      <div id="AlertMessage">HI! Buddy <br /> Pull the Handle </div>
+
+     <div id="Content">
+
+      <div id="PlayWindow">
+         
+         <div class="line" id="Line1">
+           <i class="em em-ghost" id="A1"></i>
+           <i class="em em-pear" id="A2"></i>
+           <i class="em em-lemon" id="A3"></i>
+           <i class="em em-seven" id="A4"></i>
+           <i class="em em-rabbit" id="A5"></i>
+           <i class="em em-cat" id="A6"></i>
+           <i class="em em-octocat" id="A7"></i>
+         </div>
+         
+         <div class="line" id="Line2">
+           <i class="em em-cat" id="B1"></i>
+           <i class="em em-octocat" id="B2"></i>
+           <i class="em em-pear" id="B3"></i>
+           <i class="em em-seven" id="B4"></i>
+           <i class="em em-lemon" id="B5"></i>
+           <i class="em em-rabbit" id="B6"></i>
+           <i class="em em-ghost" id="B7"></i>
+         </div>
+         
+         <div class="line" id="Line3">
+           <i class="em em-lemon" id="C1"></i>
+           <i class="em em-rabbit" id="C2"></i>
+           <i class="em em-ghost" id="C3"></i>
+           <i class="em em-seven" id="C4"></i>
+           <i class="em em-pear" id="C5"></i>
+           <i class="em em-octocat" id="C6"></i>
+           <i class="em em-cat" id="C7"></i>
+         </div>
+      </div>
+
+
+      <div id="RollBarContainer">
+        <div id="RollBar">
+        </div>
+        <div id="RollBall">
+        </div>
+        <div id="BarJoint">
+        </div>
+      </div>
+
+     </div>
+
+
+    </div>
+
+
   </body>
+
+<script>
+
+var draggable = false;
+var AllowDrag = true;
+var Roll = false;
+var Brake = false;
+var RollSpeed= 4;
+
+function draw(){
+
+if(Roll==true){
+Content.style.backgroundImage = "url(Bin_EX.png)";
+AlertMessage.innerHTML = "YEAH!"+ "<br />" + "ROLL!!!";
+AlertMessage.style.opacity=1;
+
+for(j=1; j<4; j++){
+  
+  var LineCount;
+
+  if(j==1){ LineCount="A"; }
+  else if(j==2){ LineCount="B"; }
+  else if(j==3){ LineCount="C"; }
+
+  for(i=1; i<8; i++){
+
+    var AObject = document.getElementById(LineCount+i);
+    var PAObject;
+
+    if(i<7){
+    PAObject = document.getElementById(LineCount+(i+1));
+    }
+    else if(i==7){
+    PAObject = document.getElementById(LineCount+(1));
+    }
+
+    AObject.style.top = parseFloat(AObject.style.top) + RollSpeed*(1+(2.2*j)) + "px";
+    if(parseFloat(AObject.style.top) >= LineHeight+ LineHeight*(1/3)){
+      //alert(PAObject);
+    AObject.style.top =  (parseFloat(PAObject.style.top)) - (1/3)*LineHeight+RollSpeed*(1+(1.8*j)) +"px";
+    }
+
+  }
+  
+}
+}
+
+if(Brake==true){
+RollSpeed = RollSpeed-0.02;
+
+if(RollSpeed <=0 ){
+
+RunCheck();
+//
+AllowDrag=true;
+Roll=false;
+Brake = false;
+RollSpeed = 5;
+//-------Regular---Layout//
+//setTimeout("Layout()",1500);
+//
+}
+
+}
+
+
+}
+
+//var TargetStr = new Array();
+var TargetNum = new Array();
+
+var LineAFinal = new Array();
+var LineBFinal = new Array();
+var LineCFinal = new Array();
+
+function RunCheck(){
+for(j=1; j<4; j++){
+  
+  var LineCount;
+
+  if(j==1){ LineCount="A"; }
+  else if(j==2){ LineCount="B"; }
+  else if(j==3){ LineCount="C"; }
+
+  for(i=1; i<8; i++){
+
+    var AObject = document.getElementById(LineCount+i);
+
+    if((parseFloat(AObject.style.top)>(1/3)*LineHeight) && (parseFloat(AObject.style.top)<(2/3)*LineHeight)){
+    
+     //TargetStr[(j-1)] = LineCount;
+     TargetNum[(j-1)] = i;
+     //console.log(TargetStr[(j-1)]);
+     //console.log(TargetNum[(j-1)]);
+    }
+}
+}
+
+SetIntposition();
+
+}
+
+function SetIntposition(){
+
+     //----------------------------A-----------------------------------//
+
+      if( parseFloat($('#'+"A"+TargetNum[0]).css("top")) > (1/2)*LineHeight ){
+
+      lineA_adjust_Down();
+
+        if(TargetNum[0]==1){LineAFinal[1] =7;}
+        else{LineAFinal[1] = TargetNum[0]-1;}
+
+      }
+      else{
+      
+      lineA_adjust_Up();
+      
+       LineAFinal[1] = TargetNum[0];
+
+      }
+
+      //----------------------------B-----------------------------------//
+
+      if( parseFloat($('#'+"B"+TargetNum[1]).css("top")) > (1/2)*LineHeight ){
+       setTimeout("lineB_adjust_Down()",100);
+
+       if(TargetNum[1]==1){LineBFinal[1] =7;}
+        else{LineBFinal[1] = TargetNum[1]-1;}
+
+      }
+      else{
+
+        setTimeout("lineB_adjust_Up()",100);
+        LineBFinal[1] = TargetNum[1];
+      }
+
+      //----------------------------C-----------------------------------//
+
+      if( parseFloat($('#'+"C"+TargetNum[2]).css("top")) > (1/2)*LineHeight ){
+        setTimeout("lineC_adjust_Down()",200);
+        if(TargetNum[2]==1){LineCFinal[1] = 7;}
+        else{LineCFinal[1] = TargetNum[2]-1;}
+      }
+      else{
+        setTimeout("lineC_adjust_Up()",200);
+         LineCFinal[1] = TargetNum[2];
+      }
+
+//console.log(LineAFinal[1]+"  "+LineBFinal[1]+"  "+LineCFinal[1]);
+
+TestWin();
+
+}
+
+function TestWin(){
+
+//---------------------ArryA
+if(LineAFinal[1] == 1){
+LineAFinal[0] = 7;
+LineAFinal[2] = 2;
+}
+else if(LineAFinal[1] == 7){
+LineAFinal[0] = 6;
+LineAFinal[2] = 1;
+}
+else{
+LineAFinal[0] = LineAFinal[1]-1;
+LineAFinal[2] = LineAFinal[1]+1;
+}
+
+//---------------------ArryB
+if(LineBFinal[1] == 1){
+LineBFinal[0] = 7;
+LineBFinal[2] = 2;
+}
+else if(LineBFinal[1] == 7){
+LineBFinal[0] = 6;
+LineBFinal[2] = 1;
+}
+else{
+LineBFinal[0] = LineBFinal[1]-1;
+LineBFinal[2] = LineBFinal[1]+1;
+}
+
+//---------------------ArryC
+if(LineCFinal[1] == 1){
+LineCFinal[0] = 7;
+LineCFinal[2] = 2;
+}
+else if(LineCFinal[1] == 7){
+LineCFinal[0] = 6;
+LineCFinal[2] = 1;
+}
+else{
+LineCFinal[0] = LineCFinal[1]-1;
+LineCFinal[2] = LineCFinal[1]+1;
+}
+
+// console.log( LineAFinal[0]+"  "+LineAFinal[1]+"  "+LineAFinal[2]);
+// console.log( LineBFinal[0]+"  "+LineBFinal[1]+"  "+LineBFinal[2]);
+// console.log( LineCFinal[0]+"  "+LineCFinal[1]+"  "+LineCFinal[2]);
+
+$('#LA1').removeClass(localStorage.A00);
+$('#LA2').removeClass(localStorage.A01);
+$('#LA3').removeClass(localStorage.A02);
+
+$('#LB1').removeClass(localStorage.B00);
+$('#LB2').removeClass(localStorage.B01);
+$('#LB3').removeClass(localStorage.B02);
+
+$('#LC1').removeClass(localStorage.C00);
+$('#LC2').removeClass(localStorage.C01);
+$('#LC3').removeClass(localStorage.C02);
+
+
+var A00 = document.getElementById('A'+LineAFinal[0]).className;
+var A01 = document.getElementById('A'+LineAFinal[1]).className;
+var A02 = document.getElementById('A'+LineAFinal[2]).className;
+
+localStorage.A00=A00;
+localStorage.A01=A01;
+localStorage.A02=A02;
+
+console.log(A00+" "+A01+" "+A02);
+
+var B00 = document.getElementById('B'+LineBFinal[0]).className;
+var B01 = document.getElementById('B'+LineBFinal[1]).className;
+var B02 = document.getElementById('B'+LineBFinal[2]).className;
+
+localStorage.B00=B00;
+localStorage.B01=B01;
+localStorage.B02=B02;
+
+
+console.log(B00+" "+B01+" "+B02);
+
+var C00 = document.getElementById('C'+LineCFinal[0]).className;
+var C01 = document.getElementById('C'+LineCFinal[1]).className;
+var C02 = document.getElementById('C'+LineCFinal[2]).className;
+
+localStorage.C00=C00;
+localStorage.C01=C01;
+localStorage.C02=C02;
+
+
+console.log(C00+" "+C01+" "+C02+ "\n");
+
+Content.style.backgroundImage = "url(Bin_NM.png)";
+AlertMessage.style.opacity=0;  
+
+//-----------Line_Win----------------//
+if( A00 == B00 && B00 == C00 ){Line_Win_Alert();}
+if( A01 == B01 && B01 == C01 ){Line_Win_Alert();}
+if( A02 == B02 && B02 == C02 ){Line_Win_Alert();}
+
+
+//-----------X_Win----------------//
+if( A00 == B01 && B01 == C02 ){X_Win_Alert();}
+if( A02 == B01 && B01 == C00 ){X_Win_Alert();}
+
+}
+
+function Line_Win_Alert(){
+$("#AlertMessage").text("~ LINE WIN ~");
+Content.style.backgroundImage = "url(Bin_EX.png)";
+AlertMessage.style.opacity=1;
+setTimeout("EndAlert()",3200);
+}
+
+function X_Win_Alert(){
+$("#AlertMessage").text("~ X WIN ~");
+Content.style.backgroundImage = "url(Bin_EX.png)";
+AlertMessage.style.opacity=1;
+setTimeout("EndAlert()",3200);
+}
+
+function EndAlert(){
+Content.style.backgroundImage = "url(Bin_NM.png)";
+AlertMessage.style.opacity=0;  
+}
+
+RollBall.onmousemove = function(e){
+
+if(draggable==true){
+
+if(parseFloat($("#RollBall").css("top"))>=-15.0001 && parseFloat($("#RollBall").css("top"))<=150){
+MouseRelative = e.pageY -(0.25*parseFloat($("#Container").css("height"))-16);
+$("#RollBall").css( {top :   MouseRelative });
+$("#RollBar").css( {height:  160 - MouseRelative, top: MouseRelative + 15});
+}
+
+
+else if(parseFloat($("#RollBall").css("top"))<-15.0001){
+  $("#RollBall").css( {top :   -15 });
+  $("#RollBar").css( {height:  160, top: 15});
+    $("#RollBall").animate({top :   -15 },100,'jswing');
+  $("#RollBar").animate({height:  160, top: 15},100,'jswing');
+}
+else if(parseFloat($("#RollBall").css("top"))>150){
+  $("#RollBall").css( {top :   149.999});
+  $("#RollBar").css( {height:  15});
+  BounceBack();
+}
+
+}
+}
+
+
+function BounceBack(){
+  $("#RollBall").animate({top : -15 },400,'easeOutBounce');
+  $("#RollBar").animate({height: 160, top: 15},400,'easeOutBounce');
+  RandomStop();
+}
+
+RollBall.onmousedown = function(){
+if(Overhide==false){
+draggable=true;
+}
+}
+
+RollBall.onmouseup = function(){
+draggable=false;
+BounceBack();
+Roll = true;
+
+}
+
+RollBall.onmouseout = function(){
+draggable=false;
+BounceBack();
+if(Overhide==false && parseFloat($("#RollBall").css("top"))>-10){
+Roll = true;
+}
+
+}
+
+
+function RandomStop(){
+if(AllowDrag==true){
+var StopTime = ((Math.ceil(Math.random()*6+3))*1000);
+setTimeout("StopTheRoll()", StopTime);
+draggable=false;
+AllowDrag=false;
+}
+}
+
+function StopTheRoll(){
+
+Brake = true;
+
+}
+
+//---------------Adjust_Callbacks-------------//
+
+function lineA_adjust_Down(){
+  for(i=0; i<8; i++){
+   $("#A"+i).animate({ 
+        top : parseFloat($("#A"+i).css("top")) + ((2/3)*LineHeight - parseFloat($('#'+"A"+TargetNum[0]).css("top"))) 
+    },700,'easeOutBounce' );
+  }
+}
+
+function lineA_adjust_Up(){
+      for(i=0; i<8; i++){
+       $("#A"+i).animate({ 
+        top : parseFloat($("#A"+i).css("top")) + ((1/3)*LineHeight - parseFloat($('#'+"A"+TargetNum[0]).css("top"))) 
+       },700,'easeOutBounce' );
+
+      }
+}
+
+function lineB_adjust_Down(){
+
+      for(i=0; i<8; i++){
+       $("#B"+i).animate({ 
+        top : parseFloat($("#B"+i).css("top")) + ((2/3)*LineHeight - parseFloat($('#'+"B"+TargetNum[1]).css("top"))) 
+       },700,'easeOutBounce' );
+      }
+}
+
+function lineB_adjust_Up(){
+ for(i=0; i<8; i++){
+       $("#B"+i).animate({ 
+        top : parseFloat($("#B"+i).css("top")) + ((1/3)*LineHeight - parseFloat($('#'+"B"+TargetNum[1]).css("top"))) 
+       },700,'easeOutBounce' );
+      }
+}
+
+function lineC_adjust_Down(){
+       for(i=0; i<8; i++){
+       $("#C"+i).animate({ 
+        top : parseFloat($("#C"+i).css("top")) + ((2/3)*LineHeight - parseFloat($('#'+"C"+TargetNum[2]).css("top"))) 
+       },700,'easeOutBounce' );
+      }
+  
+}
+
+
+function lineC_adjust_Up(){
+
+for(i=0; i<8; i++){
+
+       $("#C"+i).animate({ 
+
+      top : parseFloat($("#C"+i).css("top")) + ((1/3)*LineHeight - parseFloat($('#'+"C"+TargetNum[2]).css("top"))) 
+
+       },700,'easeOutBounce' );
+
+      }
+  
+}
+
+function ShowLastResult(){
+
+
+$('#LA1').addClass(localStorage.A00);
+$('#LA2').addClass(localStorage.A01);
+$('#LA3').addClass(localStorage.A02);
+
+$('#LB1').addClass(localStorage.B00);
+$('#LB2').addClass(localStorage.B01);
+$('#LB3').addClass(localStorage.B02);
+
+$('#LC1').addClass(localStorage.C00);
+$('#LC2').addClass(localStorage.C01);
+$('#LC3').addClass(localStorage.C02);
+
+}
+
+
+
+
+</script>
+
 </html>
