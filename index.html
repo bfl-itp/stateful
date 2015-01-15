@@ -1,9 +1,196 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>So-and-so's Stateful Assignment</title>
-  </head>
-  <body>
-    YOUR PROJECT HERE
-  </body>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title> React Assignment</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+  <!--<script type="text/javascript" src="jquery.js"></script>-->
+  <!--<script type="text/javascript" src="jquery.scrollmagic.debug.js"></script>-->
+  <!--<script type="text/javascript" src="jquery.scrollmagic.js"></script>-->
+  <!--<script type="text/javascript" src="script.js"></script>-->
+  <style>
+
+    html, body{
+      height: 100%;
+    }
+
+    div{
+      display: block;
+      text-align: center;
+    }
+
+    .wrapper{
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      right: 0;
+      /*min-height: 600px;*/
+      width: 100%;
+    }
+
+    .sections{
+      display: none;
+      height: 100%;
+      width: 100%;
+    }
+
+    .home {
+      height: 100%;
+      width: 100%;
+    }
+
+    #one{
+      /*padding-top: 30%;*/
+      /*padding-top: 50%;*/
+      /*padding-bottom: 50%;*/
+      display: flex;
+      background: gray;
+      margin: auto;
+    }
+
+    #two {
+      /*padding: 50%;*/
+      /*padding-top: 50%;*/
+      background: gainsboro;
+    }
+
+    #three {
+      /*padding: 50%;*/
+      background: ghostwhite;
+    }
+
+    #four {
+      /*padding: 50%;*/
+      background: gold;
+    }
+
+    #five {
+      /*padding: 50%;*/
+      background: goldenrod;
+    }
+
+    .header {
+      display: none;
+      bottom: 0;
+    }
+
+    .inlineB {
+      display: inline-flex;
+      width: 50%;
+      /*height: 180px;*/
+      /*padding: 10px;*/
+      /*z-index: 100;*/
+    }
+
+    #normal {
+      background-color: cyan;
+      /*padding-right: 10;*/
+      /*margin-right: 0;*/
+      /*border: 2px solid;*/
+      border-radius: 50px;
+    }
+
+    #quick {
+      background-color: mediumvioletred;
+      /*padding-left: 10px;*/
+      /*margin-left: 0;*/
+      /*border: 2px solid;*/
+      border-radius: 50px;
+    }
+
+    #inlinewrapper {
+      width: 90% ;
+      height: 40%;
+      display: flex;
+      /*z-index: 100;*/
+      margin: auto;
+    }
+
+    #widthspacer {
+      width: 10%;
+    }
+    p{
+      font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+      font-size: 12em;
+      color: #242424;
+      margin: auto;
+
+    }
+
+  </style>
+</head>
+<body>
+
+<section class="wrapper">
+  <!--<div class="sO"></div>-->
+
+  <div class="home" id="one">
+    <!--<div class="sO"></div>-->
+    <div id="inlinewrapper">
+      <div id="normal" class="inlineB">
+        <p class="left">
+
+        </p>
+      </div>
+      <div id="widthspacer"></div>
+      <div id="quick" class="inlineB">
+        <p class="right">
+
+        </p>
+      </div>
+    </div>
+  </div>
+  <script>
+    var nvals = localStorage.getItem('normal');
+
+    if(nvals == null) {
+      nvals = 0;
+    } else {
+      nvals = parseInt(nvals, 10);
+    }
+
+    var xvals = localStorage.getItem('quick');
+
+    if(xvals == null) {
+      xvals = 0;
+    } else {
+      xvals = parseInt(xvals, 10);
+    }
+
+    $("p.left").text(nvals);
+    $("p.right").text(xvals);
+
+    $('#normal').click(function () {
+      nvals++;
+//            console.log(nvals);
+      localStorage.setItem("normal", (nvals).toString(10));
+      $("p.left").text(nvals);
+      this.style.backgroundColor = this.style.backgroundColor == 'white' ? 'cyan' : 'white';
+    });
+
+    $('#quick').click(function () {
+      xvals++;
+      localStorage.setItem("quick", (xvals).toString(10));
+      $("p.right").text(xvals);
+      this.style.backgroundColor = this.style.backgroundColor == 'white' ? 'mediumvioletred' : 'white';
+    });
+
+
+
+  </script>
+  <div class="sections" id="two">
+    <!--<h1>Is</h1>-->
+  </div>
+  <div class="sections" id="three">
+    <!--<h1>How</h1>-->
+  </div>
+  <div class="sections" id="four">
+    <!--<h1>You</h1>-->
+  </div>
+  <div class="sections" id="five">
+    <!--<h1>Tie</h1>-->
+  </div>
+</section>
+
+</body>
 </html>
